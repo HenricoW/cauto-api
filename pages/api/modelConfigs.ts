@@ -15,22 +15,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<MConfi
     })
     .then((page) => {
       console.log("");
-      // console.log(page);
-
-      const styleS = page.indexOf("<style>");
-      const styleE = page.indexOf("</style>") + 8;
-      const navS = page.indexOf(`<!-- Mega Menu -->`);
-      const navE = page.indexOf(`<div class="container" id="main-container">`);
-      const headS = page.indexOf("<head>");
-      const headE = page.indexOf("</head>") + 7;
-
-      const tableS = page.indexOf("<tbody>");
-      const tableE = page.indexOf("<!-- The following provides pagination for mobile devices. -->") + 8;
-
-      // const nuhead = page.slice(0, styleS) + page.slice(styleE, headE);
-      const theTable = page.slice(tableS, tableE);
-      console.log("head: ", theTable);
-      console.log("");
 
       const pgTable = getPgTable(page);
       const modelName = getModelName(page);

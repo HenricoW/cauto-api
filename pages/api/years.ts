@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { baseURL, yearEndPt } from "../utils/configData";
-import { YearsData } from "../utils/types";
+import { baseURL, yearEndPt } from "../../utils/configData";
+import { YearsData } from "../../utils/types";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<YearsData>) {
   let years: string[] = [];

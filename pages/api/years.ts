@@ -14,4 +14,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<YearsD
       res.status(200).json({ years });
       res.end();
     })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ years: [""] });
+      res.end();
+    });
 }

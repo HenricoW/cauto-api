@@ -13,4 +13,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<MakesD
       res.status(200).json({ makes });
       res.end();
     })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ makes: [""] });
+      res.end();
+    });
 }

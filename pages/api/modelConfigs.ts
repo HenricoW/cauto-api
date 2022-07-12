@@ -8,8 +8,15 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<MConfi
   const { year, make, model } = req.body;
 
   fetch(baseURL + getConfigEndPt(year, make, model), { headers: { Accept: "text/html" } })
-    .then((resp) => resp.text())
+    .then((resp) => {
+      console.log("year, make, model:", year, make, model);
+      console.log(resp.statusText);
+      return resp.text();
+    })
     .then((page) => {
+      console.log();
+      console.log(page.slice(0, 100));
+      console.log();
       const pgTable = getPgTable(page);
       const modelName = getModelName(page);
       console.log("model name", modelName);
@@ -19,6 +26,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<MConfi
       const engineConfigs = getInner(lineArray, identifier_eConfig!);
       const emits = getInner(lineArray, identifier_emission!).map((v) => +v.split(" ")[0]);
       console.log("model configs", modelConfigs);
+      console.log("emits", emits);
 
       const imgs = getImgs(lineArray);
 

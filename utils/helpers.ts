@@ -17,6 +17,7 @@ export const getInner = (lineArr: string[], tag: string) =>
 export const getPgTable = (pg: string) => {
   const start = pg.indexOf(identifier_tStart!);
   const end = pg.indexOf(identifier_tEnd!);
+  console.log("page table start & end:", start, end);
   return pg.slice(start, end);
 };
 

@@ -28,7 +28,7 @@ export const getModelName = (pg: string) => {
 };
 
 export const getImgs = (lineArray: string[]) => {
-  const imgLines = lineArray.reduce((acc: number[], v, i) => (v.includes(identifier_carImg!) ? [...acc, i] : acc), []);
+  const imgLines = lineArray.reduce((acc: number[], v, i) => (v.includes('src="/feg/photos') ? [...acc, i] : acc), []);
   return imgLines.map((i) => lineArray[i].split("src=")[1].split(`"`)[1]).map((v) => baseURL + v);
 };
 

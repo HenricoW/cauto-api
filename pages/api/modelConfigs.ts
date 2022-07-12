@@ -19,6 +19,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<MConfi
       const engineConfigs = getInner(lineArray, identifier_eConfig!);
       const emits = getInner(lineArray, identifier_emission!).map((v) => +v.split(" ")[0]);
       console.log("model configs", modelConfigs);
+      console.log("emits", emits);
 
       const imgs = getImgs(lineArray);
 

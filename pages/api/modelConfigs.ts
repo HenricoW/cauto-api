@@ -39,7 +39,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<MConfi
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json(errModelConfig);
+      res.status(500).json({ ...errModelConfig, modelName: err.message });
       res.end();
     });
 }

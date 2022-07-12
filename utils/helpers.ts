@@ -15,19 +15,19 @@ export const getInner = (lineArr: string[], tag: string) =>
   lineArr.filter((val) => val.includes(tag)).map((l) => trimLine(l));
 
 export const getPgTable = (pg: string) => {
-  const start = pg.indexOf(identifier_tStart);
-  const end = pg.indexOf(identifier_tEnd);
+  const start = pg.indexOf(identifier_tStart!);
+  const end = pg.indexOf(identifier_tEnd!);
   return pg.slice(start, end);
 };
 
 export const getModelName = (pg: string) => {
   const allLines = pg.split("\n");
-  const searchLine = allLines.filter((v) => v.includes(identifier_modelName));
+  const searchLine = allLines.filter((v) => v.includes(identifier_modelName!));
   return trimLine(allLines[allLines.indexOf(searchLine[0]) + 1]);
 };
 
 export const getImgs = (lineArray: string[]) => {
-  const imgLines = lineArray.reduce((acc: number[], v, i) => (v.includes(identifier_carImg) ? [...acc, i] : acc), []);
+  const imgLines = lineArray.reduce((acc: number[], v, i) => (v.includes(identifier_carImg!) ? [...acc, i] : acc), []);
   return imgLines.map((i) => lineArray[i].split("src=")[1].split(`"`)[1]).map((v) => baseURL + v);
 };
 

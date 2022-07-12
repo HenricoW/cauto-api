@@ -5,7 +5,7 @@ import { YearsData } from "../../utils/types";
 export default function handler(req: NextApiRequest, res: NextApiResponse<YearsData>) {
   let years: string[] = [];
 
-  fetch(baseURL + yearEndPt, {
+  fetch(baseURL! + yearEndPt, {
     headers: { Accept: "application/json" },
   })
     .then((resp) => resp.json())

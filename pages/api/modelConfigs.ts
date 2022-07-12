@@ -14,9 +14,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<MConfi
       const modelName = getModelName(page);
 
       const lineArray = pgTable.split("\n");
-      const modelConfigs = getInner(lineArray, identifier_mConfig);
-      const engineConfigs = getInner(lineArray, identifier_eConfig);
-      const emits = getInner(lineArray, identifier_emission).map((v) => +v.split(" ")[0]);
+      const modelConfigs = getInner(lineArray, identifier_mConfig!);
+      const engineConfigs = getInner(lineArray, identifier_eConfig!);
+      const emits = getInner(lineArray, identifier_emission!).map((v) => +v.split(" ")[0]);
 
       const imgs = getImgs(lineArray);
 

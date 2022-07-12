@@ -12,11 +12,13 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<MConfi
     .then((page) => {
       const pgTable = getPgTable(page);
       const modelName = getModelName(page);
+      console.log("model name", modelName);
 
       const lineArray = pgTable.split("\n");
       const modelConfigs = getInner(lineArray, identifier_mConfig!);
       const engineConfigs = getInner(lineArray, identifier_eConfig!);
       const emits = getInner(lineArray, identifier_emission!).map((v) => +v.split(" ")[0]);
+      console.log("model configs", modelConfigs);
 
       const imgs = getImgs(lineArray);
 
@@ -39,7 +41,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<MConfi
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json(errModelConfig);
+      res.status(500).json({ ...errModelConfig, modelName: err.message });
       res.end();
     });
 }

@@ -44,6 +44,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<MConfi
       console.log("emits", emits);
 
       const imgs = getImgs(lineArray);
+      console.log("imgs", imgs);
 
       if (modelConfigs.length !== emits.length) {
         console.log("Emission data mismatch");

@@ -16,14 +16,14 @@ export const getInner = (lineArr: string[], tag: string) =>
 
 export const getPgTable = (pg: string) => {
   const start = pg.indexOf(identifier_tStart!);
-  const end = pg.indexOf(identifier_tEnd!);
+  const end = pg.indexOf("<!-- The following provides pagination for mobile devices. -->");
   console.log("page table start & end:", start, end);
   return pg.slice(start, end);
 };
 
 export const getModelName = (pg: string) => {
   const allLines = pg.split("\n");
-  const searchLine = allLines.filter((v) => v.includes(identifier_modelName!));
+  const searchLine = allLines.filter((v) => v.includes(`<a id="content">`));
   return trimLine(allLines[allLines.indexOf(searchLine[0]) + 1]);
 };
 

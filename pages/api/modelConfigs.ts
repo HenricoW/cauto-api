@@ -37,9 +37,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<MConfi
       console.log("model name", modelName);
 
       const lineArray = pgTable.split("\n");
-      const modelConfigs = getInner(lineArray, identifier_mConfig!);
-      const engineConfigs = getInner(lineArray, identifier_eConfig!);
-      const emits = getInner(lineArray, identifier_emission!).map((v) => +v.split(" ")[0]);
+      const modelConfigs = getInner(lineArray, '<a href="Find.do?action=sbs');
+      const engineConfigs = getInner(lineArray, '<span class="config">');
+      const emits = getInner(lineArray, '<div class="ghg-score">').map((v) => +v.split(" ")[0]);
       console.log("model configs", modelConfigs);
       console.log("emits", emits);
 

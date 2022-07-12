@@ -14,9 +14,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<MConfi
       return resp.text();
     })
     .then((page) => {
-      console.log();
-      console.log(page.slice(0, 100));
-      console.log();
+      console.log("");
+      console.log(page);
+      console.log("");
       const pgTable = getPgTable(page);
       const modelName = getModelName(page);
       console.log("model name", modelName);

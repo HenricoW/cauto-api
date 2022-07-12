@@ -24,8 +24,12 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<MConfi
       const headS = page.indexOf("<head>");
       const headE = page.indexOf("</head>") + 7;
 
-      const nuhead = page.slice(0, styleS) + page.slice(styleE, headE);
-      console.log("head: ", nuhead);
+      const tableS = page.indexOf("<tbody>");
+      const tableE = page.indexOf("<!-- The following provides pagination for mobile devices. -->") + 8;
+
+      // const nuhead = page.slice(0, styleS) + page.slice(styleE, headE);
+      const theTable = page.slice(tableS, tableE);
+      console.log("head: ", theTable);
       console.log("");
 
       const pgTable = getPgTable(page);

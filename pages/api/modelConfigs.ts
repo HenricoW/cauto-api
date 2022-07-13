@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { baseURL, identifier_eConfig, identifier_emission, identifier_mConfig } from "../../utils/configData";
+import { baseURL } from "../../utils/configData";
 import { errModelConfig } from "../../utils/configData";
 import { compileConfig, getConfigEndPt, getImgs, getInner, getModelName, getPgTable } from "../../utils/helpers";
 import { MConfigsData } from "../../utils/types";

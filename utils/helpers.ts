@@ -1,5 +1,5 @@
-import { baseURL, configsEndPt, identifier_carImg, makesEndPt, modelsEndPt } from "./configData";
-import { identifier_modelName, identifier_tEnd, identifier_tStart } from "./configData";
+import { baseURL, configsEndPt, makesEndPt, modelsEndPt } from "./configData";
+import { identifier_tStart } from "./configData";
 
 export const getMakesEndPt = (year: string) => `${makesEndPt}&year1=${year}&year2=${year}&format=json`;
 

@@ -5,6 +5,7 @@ import { YearsData } from "../../utils/types";
 export default function handler(req: NextApiRequest, res: NextApiResponse<YearsData>) {
   res.setHeader("Access-Control-Allow-Methods", "GET");
   res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   let years: string[] = [];
 
   fetch(baseURL! + yearEndPt, {

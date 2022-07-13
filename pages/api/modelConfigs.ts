@@ -7,6 +7,7 @@ import { MConfigsData } from "../../utils/types";
 export default function handler(req: NextApiRequest, res: NextApiResponse<MConfigsData>) {
   res.setHeader("Access-Control-Allow-Methods", "GET, POST");
   res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   const { year, make, model } = req.body;
 
   fetch(baseURL + getConfigEndPt(year, make, model), { headers: { Accept: "text/html" } })

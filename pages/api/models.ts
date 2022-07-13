@@ -4,6 +4,8 @@ import { getModelsEndPt } from "../../utils/helpers";
 import { ModelsData } from "../../utils/types";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<ModelsData>) {
+  res.setHeader("Access-Control-Allow-Methods", "GET");
+  res.setHeader("Access-Control-Allow-Origin", "*");
   const year = req.body.year;
   const make = req.body.make;
 

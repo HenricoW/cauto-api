@@ -5,7 +5,7 @@ import { compileConfig, getConfigEndPt, getImgs, getInner, getModelName, getPgTa
 import { MConfigsData } from "../../utils/types";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<MConfigsData>) {
-  res.setHeader("Access-Control-Allow-Methods", "GET");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST");
   res.setHeader("Access-Control-Allow-Origin", "*");
   const { year, make, model } = req.body;
 

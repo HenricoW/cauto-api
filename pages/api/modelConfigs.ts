@@ -30,10 +30,25 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         const lineArray = pgTable.split("\n");
         const modelConfigs = getInner(lineArray, '<a href="Find.do?action=sbs');
         const engineConfigs = getInner(lineArray, '<span class="config">');
-      const emits = getInner(lineArray, '<div class="ghg-score">').map((v) => +v.split(" ")[0]);
-      console.log("model configs", modelConfigs);
+        const emitsPre = getInner(lineArray, '<div class="ghg-score">').map((v) => +v.split(" ")[0]);
+        console.log("model configs", modelConfigs);
+        console.log("engine configs", engineConfigs);
+        console.log("emits", emitsPre);
 
-      console.log("emits", emits);
+        let emits = [];
+        if (emitsPre.length > modelConfigs.length) {
+          let i = 0,
+            modelCounter = 0;
+          while (i < emitsPre.length && modelCounter < modelConfigs.length) {
+            emits.push(emitsPre[i]);
+
+            if (modelConfigs[modelCounter].includes("or E85")) i += 2;
+            else i++;
+            modelCounter++;
+          }
+        } else {
+          emits = emitsPre;
+        }
 
         const imgs = getImgs(lineArray);
         console.log("imgs", imgs);
